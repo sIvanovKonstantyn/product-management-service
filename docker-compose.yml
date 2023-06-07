@@ -1,0 +1,22 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+  app:
+    build: ./
+    image: 'product-management.jar'
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - DB_URL=jdbc:postgresql://db:5432/postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5432:5432
