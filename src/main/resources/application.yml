@@ -9,5 +9,17 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
+    circuitbreaker:
+      resilience4j:
+        blocking:
+          enable: true
 
+app:
+  clients:
+    exchange-rates:
+      url: "https://api.hnb.hr"
 
